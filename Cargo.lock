@@ -41,7 +41,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "epita-coding-style-lsp"
+name = "epita-lsp"
 version = "0.1.0"
 dependencies = [
  "tokio",

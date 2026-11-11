@@ -1,1 +1,1 @@
-# count_lines_lsp
+# EPITA lsp

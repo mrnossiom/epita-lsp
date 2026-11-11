@@ -29,7 +29,7 @@ impl LanguageServer for Backend {
 				code_action_provider: Some(CodeActionProvider::Bool(true)),
 				text_document_sync: Some(TextDocumentSync::Kind(TextDocumentSyncKind::Full)),
 				execute_command_provider: Some(ExecuteCommandOptions {
-					commands: vec!["epita-cs-lsp-count-lines".to_string()],
+					commands: vec!["epita-lsp.count-lines".to_string()],
 					..Default::default()
 				}),
 				..Default::default()
@@ -85,7 +85,7 @@ impl LanguageServer for Backend {
 			let count_lines_cmd = Command {
 				title: "Count lines".to_string(),
 				tooltip: Some("Count number of true lines under the cursor".to_string()),
-				command: "epita-cs-lsp-count-lines".to_string(),
+				command: "epita-lsp.count-lines".to_string(),
 				arguments: Some(vec![lines.into()]),
 			};
 
@@ -100,7 +100,7 @@ impl LanguageServer for Backend {
 	}
 
 	async fn execute_command(&self, params: ExecuteCommandParams) -> Result<Option<LspAny>> {
-		if params.command == "epita-cs-lsp-count-lines" {
+		if params.command == "epita-lsp.count-lines" {
 			let count = &params.arguments.unwrap()[0];
 			self.client
 				.show_message(MessageType::Info, format!("{count} lines"))
